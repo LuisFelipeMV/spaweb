@@ -22,6 +22,7 @@
                 var cedula = $("#cedula").val();
                 guardar_datos_usuario(nombre, apellido, correo, telefono, domicilio, cedula);
                 console.log(obtener_datos_usuario());
+                alert("USUARIO CREADO EXITOSAMENTE")
                 document.location.href = "login.html"
             });
         });
