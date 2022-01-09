@@ -37,6 +37,22 @@
         });
         
     </script>
+    <script>
+        function getPrecio(){
+            if ($('#vip').is(":checked"))
+                {
+                    var tipo_servicio = "VIP";
+                }else{
+                    var tipo_servicio = "Normal";
+                }
+                var servicio = $("#servicio").val();
+                console.log(servicio);
+                console.log(tipo_servicio);
+                var precio = Precio(servicio,tipo_servicio)
+                console.log(precio);
+                $("#precio").val(precio);
+        }
+    </script>
     <title>Spa Web</title>
 </head>
 <body>
@@ -76,10 +92,10 @@
                     <br>
                     <div class="form-group">
                             <label for="Servicio">Servicio: &nbsp;</label>
-                            <input type="checkbox" id="vip" name="vip">
+                            <input type="checkbox" onchange="getPrecio()" id="vip" name="vip">
                             <label for="Vip">VIP</label>
                     </div>
-                        <select class="form-control" id="servicio" name="servicio">
+                        <select class="form-control" onchange="getPrecio()" id="servicio" name="servicio">
                             <option>Masaje</option>
                             <option>Facial</option>
                             <option>Depilacion</option>
@@ -113,7 +129,7 @@
                         <div class="card text" >
                             <div class="card-body">
                                 <h5 class="card-title">Precio + IVA</h5>
-                                <input class="card-text" id="precio" name="precio">
+                                <input readonly class="card-text" id="precio" name="precio">
                               </div>
                         </div> 
                     </div>

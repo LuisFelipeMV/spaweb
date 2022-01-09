@@ -20,7 +20,7 @@ function obtener_datos_reserva() {
 }
 
 function Precio(servicio,tipo_servicio){
-    if(tipo_servicio == "normal"){
+    if(tipo_servicio == "Normal"){
         if(servicio == "Masaje"){
             valor_aPagar = MasajeN + (MasajeN*0.12)
             return valor_aPagar
