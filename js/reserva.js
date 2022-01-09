@@ -10,20 +10,31 @@ var FacialN = 19.99
 var FacialV = 24.99
 
 function Registrar_reserva(servicio, tipo_servicio, fecha, horario, sucursal, total){
+    // localStorage.removeItem("datos_reserva");
+
+    // datos_reserva = new Array (servicio, tipo_servicio, fecha, horario, sucursal, total)
+    // datos = [];
+    // console.log(localStorage.getItem("datos_reserva"))
+    // if(localStorage.getItem("datos_reserva")!=null){
+    //     datos = localStorage.getItem("datos_reserva");
+    // }
+    // datos += String(datos_reserva)+"|";
+    // localStorage.setItem("datos_reserva", datos);
     datos_reserva = new Array (servicio, tipo_servicio, fecha, horario, sucursal, total)
     datos_reserva = JSON.stringify(datos_reserva)
     datos = new Array();
     if(localStorage.getItem("datos_reserva")!=null){
         datos = localStorage.getItem("datos_reserva");
     }
-    datos += datos_reserva;
+    datos += datos_reserva+"|";
 
     localStorage.setItem("datos_reserva", datos);
 }
 
 function obtener_datos_reserva() {
     var datos_reserva = localStorage.getItem("datos_reserva");
-    return datos_reserva;
+    var midato = datos_reserva.split("|");
+    return midato;
 }
 
 function Precio(servicio,tipo_servicio){
