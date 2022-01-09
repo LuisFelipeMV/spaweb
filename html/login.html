@@ -17,8 +17,13 @@
                 e.preventDefault();
                 var correo = $("#email").val();
                 var cedula = $("#password").val();
-                login(correo, cedula)?document.location.href = "index.html" : alert("Usuario o contraseña incorrectos");
-            });
+
+                if("admin@admin" == correo && "admin" == cedula){
+                    document.location.href = "admin.html"
+                }else{
+                    login(correo, cedula)?document.location.href = "index.html" : alert("Usuario o contraseña incorrectos");
+                }
+                });
         });
     </script>
 </head>
