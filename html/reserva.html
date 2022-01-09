@@ -27,12 +27,11 @@
                 var horario = $("#horario").val();
                 var sucursal = $("#sucursal").val();
                 var precio = Precio(servicio,tipo_servicio)
-                var total = precio;
-                //var total = $("#precio").val();
+                var total = $("#precio").val();
                 Registrar_reserva(servicio, tipo_servicio, fecha, horario, sucursal, total);
                 console.log(obtener_datos_reserva());
                 alert("RESERVA GENERADA")
-                //document.location.href = "index.html"
+                document.location.href = "index.html"
             });
         });
         
@@ -45,11 +44,8 @@
                 }else{
                     var tipo_servicio = "Normal";
                 }
-                var servicio = $("#servicio").val();
-                console.log(servicio);
-                console.log(tipo_servicio);
+                var servicio = $("#servicio").val();            
                 var precio = Precio(servicio,tipo_servicio)
-                console.log(precio);
                 $("#precio").val(precio);
         }
     </script>
