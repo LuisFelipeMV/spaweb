@@ -9,10 +9,34 @@
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="../js/usuarios.js"></script>
+    <script src="../js/reserva.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
-    
+    <script>
+        $(document).ready(function(){
+            $("#form_registro").submit(function(e){
+                e.preventDefault();
+                if ($('#vip').is(":checked"))
+                {
+                    var tipo_servicio = "VIP";
+                }else{
+                    var tipo_servicio = "Normal";
+                }
+                var servicio = $("#servicio").val();
+                var fecha = $("#fecha").val();
+                var horario = $("#horario").val();
+                var sucursal = $("#sucursal").val();
+                var precio = Precio(servicio,tipo_servicio)
+                var total = precio;
+                //var total = $("#precio").val();
+                Registrar_reserva(servicio, tipo_servicio, fecha, horario, sucursal, total);
+                console.log(obtener_datos_reserva());
+                alert("RESERVA GENERADA")
+                //document.location.href = "index.html"
+            });
+        });
+        
+    </script>
     <title>Spa Web</title>
 </head>
 <body>
@@ -47,15 +71,15 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <form method="POST">
+                <form id="form_registro" method="POST">
                     <div class="form-group">
                     <br>
                     <div class="form-group">
-                        <label for="Servicio">Servicio: &nbsp;</label>
+                            <label for="Servicio">Servicio: &nbsp;</label>
                             <input type="checkbox" id="vip" name="vip">
                             <label for="Vip">VIP</label>
                     </div>
-                        <select class="form-control" id="serviciosCombo" name="servicio">
+                        <select class="form-control" id="servicio" name="servicio">
                             <option>Masaje</option>
                             <option>Facial</option>
                             <option>Depilacion</option>
@@ -64,12 +88,12 @@
                     <br>
                     <div class="form-group">
                         <label for="Fecha">Fecha</label>
-                        <input type="text" name="date" class="form-control datepicker" autocomplete="off">
+                        <input type="text" id ="fecha" name="fecha" class="form-control datepicker" autocomplete="off">
                     </div>
                     <br>
                         <div class="form-group">
                             <label for="Horario">Hora</label>
-                            <select class="form-control" id="Horario" name="hora">
+                            <select class="form-control" id="horario" name="horario">
                                 <option>Mañana (9h00 a 13h00)</option>
                                 <option>Tarde (14h00 a 18h00)</option>
                                 <option>Noche (18h00 a 21h00)</option>
@@ -78,12 +102,21 @@
                     <br>
                         <div class="form-group">
                             <label for="Horario">Sucursal</label>
-                            <select class="form-control" id="Horario" name="hora">
+                            <select class="form-control" id="sucursal" name="sucursal">
                                 <option>miau miau</option>
                                 <option>San Eduardo</option>
                                 <option>Maria Guardiana</option>
                             </select>
                         </div>
+                    <br>
+                    <div class="contenedorPrecio" style="width: 250px;">
+                        <div class="card text" >
+                            <div class="card-body">
+                                <h5 class="card-title">Precio + IVA</h5>
+                                <input class="card-text" id="precio" name="precio">
+                              </div>
+                        </div> 
+                    </div>
                     <br>
                     <button type="submit" class="btn btn-primary">Reservar</button>
                 </form>

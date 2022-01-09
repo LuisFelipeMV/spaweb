@@ -9,8 +9,8 @@ var DepilacionV = 19.99
 var FacialN = 19.99
 var FacialV = 24.99
 
-function Registrar_reserva(servicio, tipo_servicio, fecha, hora, sucursal, total){
-    datos_reserva = new Array (servicio, tipo_servicio, fecha, hora, sucursal, total)
+function Registrar_reserva(servicio, tipo_servicio, fecha, horario, sucursal, total){
+    datos_reserva = new Array (servicio, tipo_servicio, fecha, horario, sucursal, total)
     localStorage.setItem("datos_reserva", JSON.stringify(datos_reserva));
 }
 
