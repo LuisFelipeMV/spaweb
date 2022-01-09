@@ -19,7 +19,7 @@
                 var cedula = $("#password").val();
 
                 if("admin@admin" == correo && "admin" == cedula){
-                    document.location.href = "admin.html"
+                    document.location.href = "users.html"
                 }else{
                     login(correo, cedula)?document.location.href = "index.html" : alert("Usuario o contraseña incorrectos");
                 }
