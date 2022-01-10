@@ -19,11 +19,17 @@ function obtener_datos_usuario() {
 }
 
 function login(email, cedula){
-    var datos_usuario = JSON.parse(localStorage.getItem("datos_usuario"));
-    if(datos_usuario != null){
-        if(datos_usuario[2] == email && datos_usuario[5] == cedula){
-            return true;
-       }
+    // localStorage.removeItem("datos_usuario") descomentar para borrar datos de usuario
+    var datos_usuario = localStorage.getItem("datos_usuario");
+    var midato = datos_usuario.split("|");
+    console.log(midato)
+    if(midato != null){
+        for(var i = 0; i < midato.length; i++){
+            midato[i] = JSON.parse(midato[i])
+            if(midato[i][2] == email && midato[i][5] == cedula){
+                return midato[i]
+            }
+        }
     }
     return false;
 }
