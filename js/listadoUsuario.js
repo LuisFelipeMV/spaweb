@@ -1,9 +1,10 @@
 
 $( document ).ready(function() {
-    var datos_reserva = localStorage.getItem("datos_reserva");
-    var midato = datos_reserva.split("|");
-    var tabla = document.getElementById("tabla_reservas");
-    
+    //toma los datos de usuarios y metelos en la tabla 
+    var datos_usuario = localStorage.getItem("datos_usuario");
+    var midato = datos_usuario.split("|");
+    var tabla = document.getElementById("tabla_usuarios");
+
     if(midato != null){
         for(var i = 0; i < midato.length; i++){
             midato[i] = JSON.parse(midato[i])
@@ -23,5 +24,6 @@ $( document ).ready(function() {
             
         }
     }
-    
+
+
 });
